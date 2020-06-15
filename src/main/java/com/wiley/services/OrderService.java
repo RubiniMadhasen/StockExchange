@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wiley.controllers.OrderController;
+import com.wiley.dto.LoginDTO;
 import com.wiley.dto.OrderDTO;
 import com.wiley.repositories.OrderRepository;
 
@@ -13,6 +15,10 @@ public class OrderService {
 	
 	@Autowired
 	private OrderRepository orderRepository;
+	
+//	@Autowired
+//	private OrderController orderController;
+	
 	
 	public List<OrderDTO> loadOrders()
 	{

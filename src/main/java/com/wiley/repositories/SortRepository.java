@@ -19,10 +19,10 @@ public interface SortRepository extends JpaRepository<OrderTable,Integer>{
 		@Query("SELECT new com.wiley.dto.SortDTO(o.orderId,o.companyName,o.noOfShares,o.sharePrice,o.status) FROM OrderTable o ")
 		public List<SortDTO> findAllOrders();
 	
-		@Query(value="DELETE FROM order_table WHERE order_id=:orderId",nativeQuery=true)
+		@Query("DELETE FROM OrderTable WHERE orderId=:orderId")
 	    @Transactional
 	    @Modifying
-	    public int deleteOrderById(@Param("orderId")int orderId);
+	    public int deleteOrderTable(@Param("orderId")int orderId);
 		
 		@Query("UPDATE OrderTable o SET o.noOfShares=:shares WHERE order_id=:OrderId")
 		@Modifying

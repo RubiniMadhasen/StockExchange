@@ -18,9 +18,12 @@ public class OrderTable {
 	@ManyToOne
 	@JoinColumn(name="orderbook_id")
 	private OrderBook orderBook;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private Users user_id;
 	public OrderTable() {}
 	public OrderTable(int orderId, int noOfShares, String companyName, int sharePrice, boolean status,
-			OrderBook orderBook) {
+			OrderBook orderBook, Users user_id) {
 		super();
 		this.orderId = orderId;
 		this.noOfShares = noOfShares;
@@ -28,6 +31,7 @@ public class OrderTable {
 		this.sharePrice = sharePrice;
 		this.status = status;
 		this.orderBook = orderBook;
+		this.user_id = user_id;
 	}
 	public int getOrderId() {
 		return orderId;
@@ -65,10 +69,17 @@ public class OrderTable {
 	public void setOrderBook(OrderBook orderBook) {
 		this.orderBook = orderBook;
 	}
+	public Users getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(Users user_id) {
+		this.user_id = user_id;
+	}
 	@Override
 	public String toString() {
 		return "OrderTable [orderId=" + orderId + ", noOfShares=" + noOfShares + ", companyName=" + companyName
-				+ ", sharePrice=" + sharePrice + ", status=" + status + ", orderBook=" + orderBook + "]";
+				+ ", sharePrice=" + sharePrice + ", status=" + status + ", orderBook=" + orderBook + ", user_id="
+				+ user_id + "]";
 	}
-    
+
 }
