@@ -3,11 +3,13 @@ package com.wiley.dto;
 public class LoginDTO {
 
 	private String userName;
-	private String passowrd;
-	public LoginDTO(String userName, String passowrd) {
+	private String password;
+	private int userId;
+	public LoginDTO(String userName, String password, int userId) {
 		super();
 		this.userName = userName;
-		this.passowrd = passowrd;
+		this.password = password;
+		this.userId = userId;
 	}
 	public String getUserName() {
 		return userName;
@@ -15,17 +17,21 @@ public class LoginDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getPassowrd() {
-		return passowrd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPassowrd(String passowrd) {
-		this.passowrd = passowrd;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	@Override
 	public String toString() {
-		return "LoginDTO [userName=" + userName + ", passowrd=" + passowrd + "]";
+		return "LoginDTO [userName=" + userName + ", password=" + password + ", userId=" + userId + "]";
 	}
-	
-	
 	
 }

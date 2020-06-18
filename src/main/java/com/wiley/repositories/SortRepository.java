@@ -11,22 +11,35 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.wiley.dto.SortDTO;
-import com.wiley.models.OrderTable;
+import com.wiley.models.SellOrderTable;
 
 @Repository
-public interface SortRepository extends JpaRepository<OrderTable,Integer>{	
+public interface SortRepository extends JpaRepository<SellOrderTable,Integer>{	
 		
-		@Query("SELECT new com.wiley.dto.SortDTO(o.orderId,o.companyName,o.noOfShares,o.sharePrice,o.status) FROM OrderTable o ")
-		public List<SortDTO> findAllOrders();
+		@Query("SELECT new com.wiley.dto.SortDTO(o.orderId,o.companyName,o.noOfShares,o.sharePrice) FROM SellOrderTable o ")
+		public List<SortDTO> findAllSellOrders();
 	
-		@Query("DELETE FROM OrderTable WHERE orderId=:orderId")
+		@Query("DELETE FROM SellOrderTable WHERE orderId=:orderId")
 	    @Transactional
 	    @Modifying
-	    public int deleteOrderTable(@Param("orderId")int orderId);
+	    public int deleteSellOrderTable(@Param("orderId")int orderId);
 		
-		@Query("UPDATE OrderTable o SET o.noOfShares=:shares WHERE order_id=:OrderId")
+		@Query("UPDATE SellOrderTable o SET o.noOfShares=:shares WHERE order_id=:OrderId")
 		@Modifying
 		@Transactional
-		public int updateOrderByOrderId(@Param("OrderId") int OrderId,@Param("shares") int shares);
+		public int updateSellOrderByOrderId(@Param("OrderId") int OrderId,@Param("shares") int shares);
+		
+		@Query("SELECT new com.wiley.dto.SortDTO(o.orderId,o.companyName,o.noOfShares,o.sharePrice) FROM BuyOrderTable o ")
+		public List<SortDTO> findAllBuyOrders();
+	
+		@Query("DELETE FROM BuyOrderTable WHERE orderId=:orderId")
+	    @Transactional
+	    @Modifying
+	    public int deleteBuyOrderTable(@Param("orderId")int orderId);
+		
+		@Query("UPDATE BuyOrderTable o SET o.noOfShares=:shares WHERE order_id=:OrderId")
+		@Modifying
+		@Transactional
+		public int updateBuyOrderByOrderId(@Param("OrderId") int OrderId,@Param("shares") int shares);
 		
 }

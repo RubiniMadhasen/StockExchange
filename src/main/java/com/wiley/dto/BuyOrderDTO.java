@@ -1,19 +1,17 @@
 package com.wiley.dto;
 
-public class OrderDTO {
+public class BuyOrderDTO {
 	private int orderId;
 	private int noOfShares;
 	private String companyName;
 	private int sharePrice;
-	private boolean status;
-	public OrderDTO() {}
-	public OrderDTO(int orderId, int noOfShares, String companyName, int sharePrice, boolean status) {
+	public BuyOrderDTO() {}
+	public BuyOrderDTO(int orderId, int noOfShares, String companyName, int sharePrice) {
 		super();
 		this.orderId = orderId;
 		this.noOfShares = noOfShares;
 		this.companyName = companyName;
 		this.sharePrice = sharePrice;
-		this.status = status;
 	}
 	public int getOrderId() {
 		return orderId;
@@ -39,16 +37,13 @@ public class OrderDTO {
 	public void setSharePrice(int sharePrice) {
 		this.sharePrice = sharePrice;
 	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
 	@Override
 	public String toString() {
-		return "OrderDTO [orderId=" + orderId + ", noOfShares=" + noOfShares + ", companyName=" + companyName
-				+ ", sharePrice=" + sharePrice + ", status=" + status + "]";
+		return "BuyOrderDTO [orderId=" + orderId + ", noOfShares=" + noOfShares + ", companyName=" + companyName
+				+ ", sharePrice=" + sharePrice + "]";
 	}
+	
+	
+
 	
 }

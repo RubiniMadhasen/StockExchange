@@ -25,10 +25,12 @@ public interface UserRepository extends JpaRepository<Users,Integer> {
 	@Modifying
 	public int deleteUser(@Param("uId")int userId);
 	
-	@Query(value="UPDATE users SET password=:password WHERE email=:email",nativeQuery=true)
-	public int updateUser(@Param("email")String email,@Param("password")String password);
+	@Query(value="UPDATE users SET password=:password WHERE user_id=:id",nativeQuery=true)
+	@Transactional
+	@Modifying
+	public int updateUser(@Param("id")int id,@Param("password")String password);
 	
 
-	@Query("SELECT new com.wiley.dto.LoginDTO(l.userName,l.password) FROM Users l ")
+	@Query("SELECT new com.wiley.dto.LoginDTO(l.userName,l.password,l.userId) FROM Users l ")
 	public List<LoginDTO> findAllUsers();
 }

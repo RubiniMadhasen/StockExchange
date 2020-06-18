@@ -7,29 +7,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderTable {
+public class BuyOrderTable {
 	@Id
 	@GeneratedValue
 	private int orderId;
 	private int noOfShares;
 	private String companyName;
 	private int sharePrice;
-	private boolean status;
 	@ManyToOne
 	@JoinColumn(name="orderbook_id")
 	private OrderBook orderBook;
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private Users user_id;
-	public OrderTable() {}
-	public OrderTable(int orderId, int noOfShares, String companyName, int sharePrice, boolean status,
-			OrderBook orderBook, Users user_id) {
+	public BuyOrderTable() {}
+	public BuyOrderTable(int orderId, int noOfShares, String companyName, int sharePrice, OrderBook orderBook,
+			Users user_id) {
 		super();
 		this.orderId = orderId;
 		this.noOfShares = noOfShares;
 		this.companyName = companyName;
 		this.sharePrice = sharePrice;
-		this.status = status;
 		this.orderBook = orderBook;
 		this.user_id = user_id;
 	}
@@ -57,12 +55,6 @@ public class OrderTable {
 	public void setSharePrice(int sharePrice) {
 		this.sharePrice = sharePrice;
 	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
 	public OrderBook getOrderBook() {
 		return orderBook;
 	}
@@ -77,9 +69,11 @@ public class OrderTable {
 	}
 	@Override
 	public String toString() {
-		return "OrderTable [orderId=" + orderId + ", noOfShares=" + noOfShares + ", companyName=" + companyName
-				+ ", sharePrice=" + sharePrice + ", status=" + status + ", orderBook=" + orderBook + ", user_id="
-				+ user_id + "]";
+		return "BuyOrderTable [orderId=" + orderId + ", noOfShares=" + noOfShares + ", companyName=" + companyName
+				+ ", sharePrice=" + sharePrice + ", orderBook=" + orderBook + ", user_id=" + user_id + "]";
 	}
+	
+	
+
 
 }

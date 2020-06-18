@@ -18,15 +18,19 @@ public class Users {
 	private String password;
 	private String email;
 	@OneToMany(mappedBy="user_id")
-	private List<OrderTable> orders;
+	private List<SellOrderTable> sellOrders;
+	@OneToMany(mappedBy="user_id")
+	private List<BuyOrderTable> buyOrders;
 	public Users() {}
-	public Users(int userId, String userName, String password, String email, List<OrderTable> orders) {
+	public Users(int userId, String userName, String password, String email, List<SellOrderTable> sellOrders,
+			List<BuyOrderTable> buyOrders) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
-		this.orders = orders;
+		this.sellOrders = sellOrders;
+		this.buyOrders = buyOrders;
 	}
 	public int getUserId() {
 		return userId;
@@ -52,21 +56,22 @@ public class Users {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<OrderTable> getOrders() {
-		return orders;
+	public List<SellOrderTable> getSellOrders() {
+		return sellOrders;
 	}
-	public void setOrders(List<OrderTable> orders) {
-		this.orders = orders;
+	public void setSellOrders(List<SellOrderTable> sellOrders) {
+		this.sellOrders = sellOrders;
+	}
+	public List<BuyOrderTable> getBuyOrders() {
+		return buyOrders;
+	}
+	public void setBuyOrders(List<BuyOrderTable> buyOrders) {
+		this.buyOrders = buyOrders;
 	}
 	@Override
 	public String toString() {
 		return "Users [userId=" + userId + ", userName=" + userName + ", password=" + password + ", email=" + email
-				+ ", orders=" + orders + "]";
+				+ ", sellOrders=" + sellOrders + ", buyOrders=" + buyOrders + "]";
 	}
-	
-	
-	
-	
-	
 
 }

@@ -21,26 +21,23 @@ public class UserService {
 	{
 		return userRepository.deleteUser(uId);
 	}
-	public int updateRecords(String email,String password)
+	public int updateRecords(int id,String password)
 	{
-		return userRepository.updateUser(email, password);
+		return userRepository.updateUser(id, password);
 	}
 	
 	public int loginUser(String userName,String password)
 	{
-		List<LoginDTO> login = userRepository.findAllUsers();
 		
-		for(LoginDTO l : login)
+		List<LoginDTO> l = userRepository.findAllUsers();
+		
+		for(LoginDTO i : l)
 		{
-			if(l.getUserName().equals(userName) && l.getPassowrd().equals(password))
+			if(i.getUserName().equals(userName) && i.getPassword().equals(password))
 			{
-				return 1;
+				return i.getUserId();
 			}
 		}
-		
 		return 0;
-		
-		//return orderRepository.(userName,password);
 	}
-
 }
